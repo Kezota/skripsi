@@ -161,3 +161,27 @@ Model:
 - Student: YOLOv8s (~11.1M params) → ~3.9× compression
 - Student KD Tuned mencapai 88.5% (Daytime) dan 91.5% (Night) performa teacher
 ```
+
+---
+
+## 10. KD v3 — Upgrade Mekanisme Distilasi (belum di-train)
+
+**Tujuan:** Memperbesar delta KD vs Baseline dengan memperbaiki mekanisme distilasi itu sendiri. Baseline & teacher **tidak disentuh** → perbandingan tetap apple-to-apple, hanya perlu retrain KD.
+
+**Diubah di:** `output-notebooks-notebook3-kd.ipynb` dan `output-notebooks-notebook3-2-resume-kd.ipynb` (keduanya identik, + markdown cell catatan di atas cell class KD).
+
+| # | Perubahan | Sebelum | Sesudah |
+|---|-----------|---------|---------|
+| 1 | **Soft confidence weighting** | Hard mask `t_conf > conf_thresh (0.2)` — anchor di bawah threshold dibuang total | Semua anchor di-distill, bobot kontinu `w = sqrt(teacher_conf)`, weighted mean (skala loss sebanding). Parameter `conf_thresh` dihapus |
+| 2 | **Beta cosine schedule** | `beta = 0.25` konstan | Cosine decay `0.35 → 0.10` sepanjang `total_epochs`. KD dominan di awal, GT dominan di akhir. Tercatat di kolom `beta_kd` history CSV |
+| 3 | **CWD feature distillation** | MSE + adapter Conv1×1+BN+ReLU, `gamma_feat = 0.08` | Channel-wise Distillation (Shu et al., ICCV 2021): KL pada softmax spasial per channel (τ=4), adapter Conv1×1 tanpa BN/ReLU, `GAMMA_FEAT = 0.03` |
+
+**Rasional singkat:**
+- #1 menyerang langsung precision-recall imbalance: anchor "setengah yakin" teacher tidak lagi dibuang → recall membaik tanpa kehilangan sinyal distilasi.
+- #2 mendamaikan temuan beta 0.3 (night bagus) vs 0.25 (daytime bagus): awal training dapat distilasi kuat, akhir training dapat dominasi GT.
+- #3 CWD terbukti di literatur lebih efektif dari MSE untuk dense prediction — student meniru *di mana* teacher melihat, bukan magnitudo aktivasi mentah.
+
+**⚠️ Catatan operasional:**
+1. Checkpoint KD v1/Tuned **tidak kompatibel** untuk resume (struktur `feat_kd` & optimizer berubah). KD v3 harus training dari epoch 1. Notebook resume sudah punya guard + warning untuk kasus ini.
+2. `GAMMA_FEAT = 0.03` adalah estimasi awal (skala KL-CWD ≠ MSE). **Pantau kolom `feat` di progress bar epoch 1**: targetkan ~5–15% dari total loss, sesuaikan bila di luar itu.
+3. Logika sudah diverifikasi unit-test dengan tensor dummy (soft weighting = weighted mean manual, beta schedule monoton 0.35→0.10, CWD backward OK & self-distill loss ≈ 0), tapi **belum di-train** — hasil aktual perlu 1 run penuh.
