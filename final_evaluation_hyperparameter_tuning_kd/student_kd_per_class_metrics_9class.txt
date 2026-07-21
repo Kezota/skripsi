@@ -1,0 +1,19 @@
+model_name,split,class_name,precision,recall,f1,ap50,ap50_95
+Student YOLOv8s KD,daytime,bike,0.5618,0.3652,0.4427,0.3559,0.1696
+Student YOLOv8s KD,daytime,bus,0.6883,0.4545,0.5475,0.4906,0.3894
+Student YOLOv8s KD,daytime,car,0.7542,0.6973,0.7246,0.7451,0.4804
+Student YOLOv8s KD,daytime,motor,0.5405,0.416,0.4701,0.4157,0.2084
+Student YOLOv8s KD,daytime,person,0.676,0.5185,0.5869,0.576,0.2859
+Student YOLOv8s KD,daytime,rider,0.6047,0.3535,0.4462,0.3882,0.1927
+Student YOLOv8s KD,daytime,traffic light,0.6823,0.4654,0.5533,0.514,0.2107
+Student YOLOv8s KD,daytime,traffic sign,0.6795,0.501,0.5767,0.5469,0.281
+Student YOLOv8s KD,daytime,truck,0.6064,0.5132,0.5559,0.5096,0.3713
+Student YOLOv8s KD,night,bike,0.4527,0.322,0.3764,0.3259,0.1383
+Student YOLOv8s KD,night,bus,0.5266,0.4308,0.4739,0.3858,0.3009
+Student YOLOv8s KD,night,car,0.7013,0.6831,0.6921,0.7228,0.4139
+Student YOLOv8s KD,night,motor,0.4077,0.2244,0.2895,0.2225,0.1284
+Student YOLOv8s KD,night,person,0.632,0.4408,0.5193,0.491,0.2395
+Student YOLOv8s KD,night,rider,0.6488,0.3559,0.4597,0.3951,0.2242
+Student YOLOv8s KD,night,traffic light,0.6521,0.5106,0.5727,0.5277,0.174
+Student YOLOv8s KD,night,traffic sign,0.6813,0.5671,0.619,0.6087,0.3083
+Student YOLOv8s KD,night,truck,0.5977,0.4615,0.5209,0.4781,0.3448
