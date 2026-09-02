@@ -2,23 +2,23 @@
 
 Teks berbahasa Inggris adalah teks naskah, siap tempel. Teks berbahasa Indonesia adalah catatan untuk kalian.
 
-Gaya bahasa mengikuti draft *Skripsi_KWY.pdf*. Semua sebutan "v3", "KD v3", "Student KD v3" dihapus dan diganti **Student KD** atau **the distilled student**. KD tuned dan KD v1 tidak disebut sama sekali. Referensi [1] sampai [21] dipertahankan, ditambah **lima** referensi baru [22] sampai [26].
+Gaya bahasa mengikuti draft _Skripsi_KWY.pdf_. Semua sebutan "v3", "KD v3", "Student KD v3" dihapus dan diganti **Student KD** atau **the distilled student**. KD tuned dan KD v1 tidak disebut sama sekali. Referensi [1] sampai [21] dipertahankan, ditambah **lima** referensi baru [22] sampai [26].
 
 ---
 
 ## 0. Yang harus dicek sebelum menempel teks
 
-| # | Lokasi | Masalah | Tindakan |
-|---|---|---|---|
-| 1 | Ref [4] | Ditulis "in CVPR, 2024". Papernya preprint arXiv 2604.26857, April 2026 | Ganti entri, lihat Bagian 7 |
-| 2 | Tabel V, baris No CWD | Naskah: 0,5010 siang, 0,4744 malam. Output notebook yang kalian kirim ke saya: 0,5003 siang, 0,4682 malam. **Beda dan mengubah kesimpulan** | Buka kembali file evaluasi ablation no-CWD, tentukan mana yang benar. Bab IV.C saya tulis dua versi |
-| 3 | Bab IV.D | Test set 5-fold disebut berasal dari "~27,600 images from official validation and test directories", sedangkan Tabel I total 24.000 | Pastikan pool mana yang dipakai, lalu isi angka di kalimat yang saya tandai `[cek]` |
-| 4 | Bab IV.F | Sitasi rusak `[?]` | Sudah saya ganti [4] di teks baru |
-| 5 | Bab III.D lama | "10-class detection head" | Sudah diganti 9-class di teks baru |
-| 6 | Tabel II lama | β = 0,3 konstan, γ = 0,1, patience 7 | Sudah diganti di teks baru |
-| 7 | Bab III.E lama | Masih "MSE Loss" | Sudah diganti CWD di teks baru |
-| 8 | Ref [16], [19], [21] | Venue dan nama penulis salah | Perbaikan ada di Bagian 7 |
-| 9 | Fig 3 caption lama | Menyebut simbol (•) dan (♦) | Caption baru ada di Bab IV |
+| #   | Lokasi                | Masalah                                                                                                                                                                | Tindakan                                                                                            |
+| --- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| 1   | Ref [4]               | Ditulis "in CVPR, 2024". Papernya preprint arXiv 2604.26857, April 2026                                                                                                | Ganti entri, lihat Bagian 7                                                                         |
+| 2   | Tabel V, baris No CWD | Naskah: 0,5010 siang, 0,4744 malam. Output notebook yang kalian kirim ke saya: 0,5003 siang, 0,4682 malam. **Beda dan mengubah kesimpulan**                            | Buka kembali file evaluasi ablation no-CWD, tentukan mana yang benar. Bab IV.C saya tulis dua versi |
+| 3   | Bab IV.D              | Test set 5-fold disebut berasal dari "~27,600 images", sedangkan Tabel I yang benar total 28.000. Selisih 400 kemungkinan gambar yang dibuang saat filtering, sebutkan | Pastikan pool mana yang dipakai, lalu isi angka di kalimat yang saya tandai `[cek]`                 |
+| 4   | Bab IV.F              | Sitasi rusak `[?]`                                                                                                                                                     | Sudah saya ganti [4] di teks baru                                                                   |
+| 5   | Bab III.D lama        | "10-class detection head"                                                                                                                                              | Sudah diganti 9-class di teks baru                                                                  |
+| 6   | Tabel II lama         | β = 0,3 konstan, γ = 0,1, patience 7                                                                                                                                   | Sudah diganti di teks baru                                                                          |
+| 7   | Bab III.E lama        | Masih "MSE Loss"                                                                                                                                                       | Sudah diganti CWD di teks baru                                                                      |
+| 8   | Ref [16], [19], [21]  | Venue dan nama penulis salah                                                                                                                                           | Perbaikan ada di Bagian 7                                                                           |
+| 9   | Fig 3 caption lama    | Menyebut simbol (•) dan (♦)                                                                                                                                            | Caption baru ada di Bab IV                                                                          |
 
 ---
 
@@ -26,7 +26,7 @@ Gaya bahasa mengikuti draft *Skripsi_KWY.pdf*. Semua sebutan "v3", "KD v3", "Stu
 
 > **Narrowing the Day-to-Night Performance Gap of Lightweight YOLOv8 Detectors via Knowledge Distillation**
 
-Alternatif lebih pendek: *Illumination-Robust Knowledge Distillation for Lightweight Driving Scene Object Detection*.
+Alternatif lebih pendek: _Illumination-Robust Knowledge Distillation for Lightweight Driving Scene Object Detection_.
 
 ---
 
@@ -61,7 +61,7 @@ In this paper, we address that question. We follow the YOLOv8-L to YOLOv8-S dist
 
 Nighttime object detection is particularly difficult due to the lack of illumination, sensing noise, and motion blur phenomena [1], [2]. Due to technical challenges like camera gain and exposure problems, images usually end up being poorly lit and have backlighting problems, leading to detectors being unable to recognize important classes such as pedestrians [1]. For instance, classical detectors such as RetinaNet and YOLOv3 suffer from serious limitations in terms of correctly detecting road users, where the input images are under-illuminated [1].
 
-In order to overcome these challenges, some methods take advantage of unsupervised domain adaptation (UDA) or image enhancement technologies, such as LIME and SID, to enhance the brightness of the input image prior to performing the detection [2], [3]. The NUDN algorithm and the LightImg data augmentation strategy proposed by Zhang and Lee are able to transform from nighttime features into daytime features, hence alleviating the problem of backlighting and poor lighting conditions [2]. RMD-Net proposed by Jaw et al., on the other hand, leverages GANs to perform feature transferring between high luminance domain and low luminance domain without introducing extra latency during testing [1]. More recently, the Debiased Teacher of Cui et al. [24] adapts a daytime-trained detector to unlabelled nighttime images through self-training, and establishes the practice of splitting BDD100K by its *day* and *night* labels as the standard day-to-night benchmark. However, enhancement methods often increase model complexity and computational cost, making them unsuitable for edge deployment [3], and domain adaptation methods address the setting in which nighttime labels are unavailable and report nighttime accuracy only. Neither reports how much a single deployed model loses when its operating condition changes from day to night.
+In order to overcome these challenges, some methods take advantage of unsupervised domain adaptation (UDA) or image enhancement technologies, such as LIME and SID, to enhance the brightness of the input image prior to performing the detection [2], [3]. The NUDN algorithm and the LightImg data augmentation strategy proposed by Zhang and Lee are able to transform from nighttime features into daytime features, hence alleviating the problem of backlighting and poor lighting conditions [2]. RMD-Net proposed by Jaw et al., on the other hand, leverages GANs to perform feature transferring between high luminance domain and low luminance domain without introducing extra latency during testing [1]. More recently, the Debiased Teacher of Cui et al. [24] adapts a daytime-trained detector to unlabelled nighttime images through self-training, and establishes the practice of splitting BDD100K by its _day_ and _night_ labels as the standard day-to-night benchmark. However, enhancement methods often increase model complexity and computational cost, making them unsuitable for edge deployment [3], and domain adaptation methods address the setting in which nighttime labels are unavailable and report nighttime accuracy only. Neither reports how much a single deployed model loses when its operating condition changes from day to night.
 
 ### B. Knowledge Distillation for Object Detection
 
@@ -93,24 +93,24 @@ This study positions itself at the intersection of four requirements that no sin
 
 The data used in this work is from the BDD100K benchmark, which was specifically created for heterogeneous multitask learning in self-driving systems [1], [2]. BDD100K is ideal for testing the robustness of the algorithm in conditions of insufficient illumination since it includes real-world video sequences shot under different weather and lighting conditions throughout the day [3]. In order to examine the effect of insufficient illumination on perception performance, the data were first filtered to select only videos taken during the day, the sufficient illumination domain (P_S), and videos taken during the night, the insufficient illumination domain (P_L) [1], [3].
 
-The class *train* was excluded from the study. It contributes only 25 training images and 3 test instances, an imbalance ratio of 791 against the class *car*, so that its average precision is statistically meaningless and distorts the class mean. Nine classes remain: bike, bus, car, motor, person, rider, traffic light, traffic sign, and truck. The entire pipeline was retrained with a nine-class head rather than filtered at evaluation time.
+The class _train_ was excluded from the study. It contributes only 25 training images and 3 test instances, an imbalance ratio of 791 against the class _car_, so that its average precision is statistically meaningless and distorts the class mean. Nine classes remain: bike, bus, car, motor, person, rider, traffic light, traffic sign, and truck. The entire pipeline was retrained with a nine-class head rather than filtered at evaluation time.
 
-The data were separated into training, validation, and test sets that represent an even distribution across both P_S and P_L. As shown in Table I, 16,000 images, 8,000 daytime and 8,000 nighttime, were assigned to training, with the remaining split equally between validation and testing. Daytime and nighttime images were sampled in equal number at every split so that any performance difference between the two conditions can be attributed to illumination rather than to data quantity.
+The data were separated into training, validation, and test sets that represent an even distribution across both P_S and P_L. As shown in Table I, 20,000 images, 10,000 daytime and 10,000 nighttime, were assigned to training, with the remaining split equally between validation and testing. Daytime and nighttime images were sampled in equal number at every split so that any performance difference between the two conditions can be attributed to illumination rather than to data quantity.
 
-**TABLE I. BDD100K Dataset Partitioning** *(tidak berubah)*
+**TABLE I. BDD100K Dataset Partitioning** _(tidak berubah)_
 
-| Split | Daytime Images (P_S) | Nighttime Images (P_L) | Total Images |
-|---|---|---|---|
-| Training | 8,000 | 8,000 | 16,000 |
-| Validation | 2,000 | 2,000 | 4,000 |
-| Testing | 2,000 | 2,000 | 4,000 |
-| Total | 12,000 | 12,000 | 24,000 |
+| Split      | Daytime Images (P_S) | Nighttime Images (P_L) | Total Images |
+| ---------- | -------------------- | ---------------------- | ------------ |
+| Training   | 10,000               | 10,000                 | 20,000       |
+| Validation | 2,000                | 2,000                  | 4,000        |
+| Testing    | 2,000                | 2,000                  | 4,000        |
+| Total      | 14,000               | 14,000                 | 28,000       |
 
 ### B. Research Pipeline
 
 The research pipeline is structured into three primary stages to facilitate effective knowledge transfer from a high-capacity architecture to a lightweight model. The initial stage involves establishing reference performance for the YOLOv8-L teacher and the YOLOv8-S student trained without teacher guidance, as illustrated in Fig. 1. The second stage distils the frozen teacher into a fresh YOLOv8-S student using the framework depicted in Fig. 2. The final stage evaluates every model separately on the daytime and nighttime test sets under the protocol of Section III-G, in order to quantify performance drops from day to night without the overhead cost of augmentation subnetworks.
 
-**Fig. 1.** Workflow for data preparation and reference training. *(File: Fig1_pipeline.png)*
+**Fig. 1.** Workflow for data preparation and reference training. _(File: Fig1_pipeline.png)_
 
 ### C. Preprocessing and Specialized Augmentation
 
@@ -120,25 +120,25 @@ In order to boost the model's robustness to the technical difficulties associate
 
 This methodology uses the teacher and student model-based method of model compression [17], [18]. In our research, YOLOv8-L (43.7 million parameters) was chosen as the teacher owing to its superior representation power. YOLOv8-S (11.2 million parameters) acts as the student, a 3.9× parameter reduction. Both models are initialised from COCO-pretrained weights. The 80-class detection head is replaced by a 9-class head whose classification bias is initialised with a focal-loss prior, so that the initial objectness probability is low and early training is stable, after which all layers are fine-tuned. The optimization process involves the AdamW optimization technique with linear warm-up followed by cosine annealing, mixed precision, and gradient clipping. Early stopping monitors the mean of the daytime and nighttime validation loss. All the hyperparameters used in the process are listed in Table II.
 
-**TABLE II. Hyperparameters and Training Configurations** *(ganti seluruh tabel lama)*
+**TABLE II. Hyperparameters and Training Configurations** _(ganti seluruh tabel lama)_
 
-| Parameter | Value |
-|---|---|
-| Input resolution | 640 × 640 |
-| Optimizer | AdamW, weight decay 0.05 |
-| Initial learning rate | 1 × 10⁻⁴ |
-| Learning rate schedule | Linear warm-up 3 epochs, then cosine annealing |
-| Batch size | 16 |
-| Teacher FT / Student Baseline / KD epochs | 30 / 50 / 50 |
-| Early stopping | Patience 14 on mean validation loss |
-| Task loss weight α | 0.7 |
-| Response distillation weight β(t) | Cosine decay from 0.35 to 0.10 |
-| Feature distillation weight γ | 0.03 |
-| Classification temperature T | 4.0 |
-| DFL temperature T_dfl | 2.0 |
-| CWD temperature τ | 4.0 |
-| Feature layers | 15, 18, 21 (neck P3, P4, P5) |
-| Anchor weight | w = √(max teacher class confidence) |
+| Parameter                                 | Value                                          |
+| ----------------------------------------- | ---------------------------------------------- |
+| Input resolution                          | 640 × 640                                      |
+| Optimizer                                 | AdamW, weight decay 0.05                       |
+| Initial learning rate                     | 1 × 10⁻⁴                                       |
+| Learning rate schedule                    | Linear warm-up 3 epochs, then cosine annealing |
+| Batch size                                | 16                                             |
+| Teacher FT / Student Baseline / KD epochs | 30 / 50 / 50                                   |
+| Early stopping                            | Patience 14 on mean validation loss            |
+| Task loss weight α                        | 0.7                                            |
+| Response distillation weight β(t)         | Cosine decay from 0.35 to 0.10                 |
+| Feature distillation weight γ             | 0.03                                           |
+| Classification temperature T              | 4.0                                            |
+| DFL temperature T_dfl                     | 2.0                                            |
+| CWD temperature τ                         | 4.0                                            |
+| Feature layers                            | 15, 18, 21 (neck P3, P4, P5)                   |
+| Anchor weight                             | w = √(max teacher class confidence)            |
 
 ### E. Integrated Knowledge Distillation Framework
 
@@ -152,7 +152,7 @@ The network applies a divide and conquer strategy for the transfer of semantic a
 
 **Cosine Distillation Schedule:** The response weight β is not constant. Following the annealing principle [23], it decays along a cosine curve from 0.35 at the first epoch to 0.10 at the last, so that the student is guided strongly by the teacher while its own representation is immature, and is increasingly governed by ground truth late in training. This also limits the influence of the teacher's own nighttime errors on the final student.
 
-**Fig. 2.** Knowledge distillation framework integrating multi-level feature alignment and response mimicking. Shaded components denote the three mechanism choices of this work. *(File: Fig2_kd_framework.png)*
+**Fig. 2.** Knowledge distillation framework integrating multi-level feature alignment and response mimicking. Shaded components denote the three mechanism choices of this work. _(File: Fig2_kd_framework.png)_
 
 ### F. Mathematical Formulation of the Objective Function
 
@@ -177,7 +177,7 @@ $$L_{CWD} = \frac{1}{|\mathcal{L}|}\sum_{l\in\mathcal{L}} \frac{\tau^2}{C_l}\sum
 
 $$\beta(t) = \beta_{end} + \tfrac{1}{2}\,(\beta_{start} - \beta_{end})\left(1 + \cos\frac{\pi\, t}{E - 1}\right) \tag{5}$$
 
-Here i indexes anchors, z are class logits, d_{i,k} are the DFL bin logits for side k of anchor i, F_l are feature maps flattened over spatial positions, φ_l is the 1 × 1 adapter, C_l the channel count at level l, and σ the softmax. The hyperparameters are α = 0.7, γ = 0.03, β_start = 0.35, and β_end = 0.10. The teacher is frozen throughout, and gradients flow to the student and the adapters only.
+Here i indexes anchors, z are class logits, d\_{i,k} are the DFL bin logits for side k of anchor i, F_l are feature maps flattened over spatial positions, φ_l is the 1 × 1 adapter, C_l the channel count at level l, and σ the softmax. The hyperparameters are α = 0.7, γ = 0.03, β_start = 0.35, and β_end = 0.10. The teacher is frozen throughout, and gradients flow to the student and the adapters only.
 
 ### G. Evaluation Metrics and Protocol
 
@@ -188,11 +188,11 @@ $$\text{Relative Drop (\%)} = \frac{\mathrm{mAP}_{50,\text{Day}} - \mathrm{mAP}_
 Normalising by daytime performance allows models with different absolute accuracy, such as the teacher and the student, to be compared on the same footing. Four complementary protocols are used, as illustrated in Fig. 3:
 
 1. **Fixed split with repeated training.** The distilled student is trained three times with identical hyperparameters under non-deterministic CUDA execution, and results are reported as mean ± standard deviation. Improvements are expressed in multiples of this standard deviation.
-2. **Stratified five-fold cross-validation.** Folds are drawn with multilabel stratification over the *timeofday* attribute and per-class instance counts, so that every fold preserves the day-night balance and the class distribution.
+2. **Stratified five-fold cross-validation.** Folds are drawn with multilabel stratification over the _timeofday_ attribute and per-class instance counts, so that every fold preserves the day-night balance and the class distribution.
 3. **Leave-one-out ablation.** Each of the three mechanism choices in Section III-E is disabled in turn, with all other settings fixed, to measure its marginal contribution in each condition.
 4. **Per-class analysis.** AP@0.5 is reported per class and per condition to identify where gains concentrate.
 
-**Fig. 3.** Evaluation protocol. Every trained model is evaluated on the daytime and nighttime test sets separately, and the relative drop is computed from the pair. *(File: Fig3_evaluation_protocol.png)*
+**Fig. 3.** Evaluation protocol. Every trained model is evaluated on the daytime and nighttime test sets separately, and the relative drop is computed from the pair. _(File: Fig3_evaluation_protocol.png)_
 
 ---
 
@@ -206,17 +206,17 @@ To isolate the impact of our integrated feature- and response-based knowledge di
 
 **TABLE III. Primary Detection Performance on BDD100K Day/Night Splits**
 
-| Model | Params | mAP50 (Day) | mAP50 (Night) | mAP50-95 (Day) | mAP50-95 (Night) | Gap (Day − Night) | Rel. Drop (%) |
-|---|---|---|---|---|---|---|---|
-| Teacher YOLOv8-L FT | 43.7M | 0.5597 | 0.5156 | 0.3261 | 0.2819 | 0.0441 | 7.88% |
-| Student Baseline (YOLOv8-S) | 11.2M | 0.4893 | 0.4470 | 0.2771 | 0.2420 | 0.0423 | 8.65% |
-| Student KD (mean over 3 runs) | 11.2M | **0.5013** | **0.4780** | **0.2834** | **0.2586** | **0.0233** | **4.65%** |
+| Model                         | Params | mAP50 (Day) | mAP50 (Night) | mAP50-95 (Day) | mAP50-95 (Night) | Gap (Day − Night) | Rel. Drop (%) |
+| ----------------------------- | ------ | ----------- | ------------- | -------------- | ---------------- | ----------------- | ------------- |
+| Teacher YOLOv8-L FT           | 43.7M  | 0.5597      | 0.5156        | 0.3261         | 0.2819           | 0.0441            | 7.88%         |
+| Student Baseline (YOLOv8-S)   | 11.2M  | 0.4893      | 0.4470        | 0.2771         | 0.2420           | 0.0423            | 8.65%         |
+| Student KD (mean over 3 runs) | 11.2M  | **0.5013**  | **0.4780**    | **0.2834**     | **0.2586**       | **0.0233**        | **4.65%**     |
 
 As detailed in Table III, the Student Baseline suffers an 8.65% relative performance drop when transitioning from daytime (0.4893 mAP50) to nighttime (0.4470 mAP50), illustrating the vulnerability of lightweight architectures to low-luminance visual noise, reduced contrast, and feature degradation. In contrast, Student KD achieves significant accuracy gains over the baseline in both illumination domains: +0.0120 mAP50 in daytime and +0.0310 mAP50 in nighttime conditions.
 
 Crucially, the absolute daytime-to-nighttime performance gap of Student KD (0.0233) is nearly half that of the Student Baseline (0.0423) and substantially lower than that of the Teacher model (0.0441). In relative terms, Student KD degrades by only 4.65% under nighttime conditions compared to 8.65% for the baseline and 7.88% for the teacher. It should be emphasized that, in relative terms, the teacher and the baseline are practically indistinguishable, so that model capacity alone does not determine illumination robustness; what determines it is the manner in which the student is trained. Despite offering a ∼3.9× parameter compression relative to the teacher, Student KD retains 89.6% of the teacher's daytime capacity and 92.7% of its nighttime performance, confirming that multi-level knowledge distillation effectively transfers domain-invariant representations that fortify compact student networks against illumination shifts.
 
-**Fig. 4.** Comparison of mAP50 under daytime and nighttime conditions for the Teacher, the Student Baseline, and Student KD. Bars show mAP50 under each condition; the number above each pair is the absolute gap, with Student KD exhibiting the smallest gap (0.0233). *(ganti caption lama yang menyebut simbol)*
+**Fig. 4.** Comparison of mAP50 under daytime and nighttime conditions for the Teacher, the Student Baseline, and Student KD. Bars show mAP50 under each condition; the number above each pair is the absolute gap, with Student KD exhibiting the smallest gap (0.0233). _(ganti caption lama yang menyebut simbol)_
 
 **Fig. 5.** Relative mAP50 performance drop from daytime to nighttime conditions across models. Student KD achieves a relative drop of 4.65% on fixed-split evaluation, nearly halving the 8.65% drop of the Student Baseline.
 
@@ -226,11 +226,11 @@ To verify that the performance gains of Student KD are statistically robust rath
 
 **TABLE IV. 3-Run Training Consistency of Student KD (Fixed-Split)**
 
-| Run | mAP50 (Day) | mAP50 (Night) | mAP50-95 (Day) | mAP50-95 (Night) |
-|---|---|---|---|---|
-| Run 1 | 0.5014 | 0.4740 | 0.2836 | 0.2543 |
-| Run 2 | 0.4989 | 0.4816 | 0.2838 | 0.2602 |
-| Run 3 | 0.5036 | 0.4783 | 0.2828 | 0.2612 |
+| Run           | mAP50 (Day)         | mAP50 (Night)       | mAP50-95 (Day)      | mAP50-95 (Night)    |
+| ------------- | ------------------- | ------------------- | ------------------- | ------------------- |
+| Run 1         | 0.5014              | 0.4740              | 0.2836              | 0.2543              |
+| Run 2         | 0.4989              | 0.4816              | 0.2838              | 0.2602              |
+| Run 3         | 0.5036              | 0.4783              | 0.2828              | 0.2612              |
 | **Mean ± SD** | **0.5013 ± 0.0024** | **0.4780 ± 0.0038** | **0.2834 ± 0.0005** | **0.2586 ± 0.0037** |
 
 The empirical standard deviations across the three runs were exceptionally small: ±0.0024 for daytime mAP50 and ±0.0038 for nighttime mAP50. Comparing these variance margins against the performance gains over the Student Baseline (+0.0120 daytime and +0.0310 nighttime) reveals that the distillation gains correspond to 5.1 × SD in daytime and 8.1 × SD in nighttime environments. This confirms that the observed improvements and illumination resilience are statistically significant and attributable to the distillation mechanism. The relative drop is likewise consistent across runs (5.46%, 3.47%, and 5.02%), every value lying well below the 8.65% of the baseline.
@@ -241,16 +241,14 @@ The empirical standard deviations across the three runs were exceptionally small
 
 To evaluate the individual contributions of the three mechanism choices of Section III-E, namely soft confidence weighting, the cosine distillation schedule, and channel-wise distillation (CWD), we conducted a leave-one-out ablation study. Each variant disables one specific technique while keeping all other components active. Table V details the performance impact relative to the full Student KD.
 
-> **Catatan penting:** baris *No CWD* di bawah memakai angka dari naskah kalian (0,5010 / 0,4744). Output notebook yang kalian kirim ke saya sebelumnya menunjukkan **0,5003 / 0,4682**. Kedua angka ini menghasilkan kesimpulan yang berbeda. Saya tulis kedua versi butir ketiga di bawah. Pilih satu setelah kalian cek file evaluasinya, lalu hapus yang lain.
-
 **TABLE V. Leave-One-Out Ablation Analysis of Student KD Components**
 
-| Ablated Variant | mAP50 (Day) | Δ vs. Student KD | mAP50 (Night) | Δ vs. Student KD | Impact |
-|---|---|---|---|---|---|
-| Full Student KD (Mean) | 0.5013 | — | 0.4780 | — | Reference |
-| No Soft Weighting (→ Hard Mask) | 0.4973 | −0.0040 (−1.7 × SD) | 0.4628 | −0.0152 (−4.0 × SD) | Critical for Nighttime |
-| No Cosine Schedule (→ Constant β) | 0.5107 | +0.0094 (+3.9 × SD) | 0.4716 | −0.0064 (−1.7 × SD) | Trade-off Balancing |
-| No CWD (→ MSE Feature Loss) | 0.5010 `[cek]` | −0.0003 `[cek]` | 0.4744 `[cek]` | −0.0036 `[cek]` | `[cek]` |
+| Ablated Variant                   | mAP50 (Day)    | Δ vs. Student KD    | mAP50 (Night)  | Δ vs. Student KD    | Impact                 |
+| --------------------------------- | -------------- | ------------------- | -------------- | ------------------- | ---------------------- |
+| Full Student KD (Mean)            | 0.5013         | —                   | 0.4780         | —                   | Reference              |
+| No Soft Weighting (→ Hard Mask)   | 0.4973         | −0.0040 (−1.7 × SD) | 0.4628         | −0.0152 (−4.0 × SD) | Critical for Nighttime |
+| No Cosine Schedule (→ Constant β) | 0.5107         | +0.0094 (+3.9 × SD) | 0.4716         | −0.0064 (−1.7 × SD) | Trade-off Balancing    |
+| No CWD (→ MSE Feature Loss)       | 0.5010 `[cek]` | −0.0003 `[cek]`     | 0.4744 `[cek]` | −0.0036 `[cek]`     | `[cek]`                |
 
 The ablation findings yield the following architectural insights:
 
@@ -265,17 +263,17 @@ If the three components addressed the same failure mode, removing any one of the
 
 ### D. Five-Fold Cross-Validation Analysis
 
-To confirm generalization beyond a single fixed dataset split, Student KD was evaluated using a stratified five-fold cross-validation scheme. The test set for each fold was drawn from a pool of `[cek: 24,000 gambar Tabel I, atau 27,600 dari direktori validation dan test resmi; pastikan dan jelaskan]`, organized via stratified multi-label sampling over the *timeofday* attribute and per-class instance counts. Table VI presents the cross-validation metrics across all five folds.
+To confirm generalization beyond a single fixed dataset split, Student KD was evaluated using a stratified five-fold cross-validation scheme. The test set for each fold was drawn from a pool of 28.000, organized via stratified multi-label sampling over the _timeofday_ attribute and per-class instance counts. Table VI presents the cross-validation metrics across all five folds.
 
 **TABLE VI. Five-Fold Cross-Validation Results for Student KD**
 
-| Fold | mAP50 (Day) | mAP50 (Night) | mAP50-95 (Day) | mAP50-95 (Night) | Rel. Drop (%) |
-|---|---|---|---|---|---|
-| Fold 0 | 0.5174 | 0.4814 | 0.2968 | 0.2612 | 6.96% |
-| Fold 1 | 0.5249 | 0.4916 | 0.2968 | 0.2630 | 6.34% |
-| Fold 2 | 0.5076 | 0.4800 | 0.2896 | 0.2644 | 5.44% |
-| Fold 3 | 0.5153 | 0.4948 | 0.2927 | 0.2738 | 3.98% |
-| Fold 4 | 0.5073 | 0.4958 | 0.2903 | 0.2648 | 2.27% |
+| Fold          | mAP50 (Day)         | mAP50 (Night)       | mAP50-95 (Day)      | mAP50-95 (Night)    | Rel. Drop (%)     |
+| ------------- | ------------------- | ------------------- | ------------------- | ------------------- | ----------------- |
+| Fold 0        | 0.5174              | 0.4814              | 0.2968              | 0.2612              | 6.96%             |
+| Fold 1        | 0.5249              | 0.4916              | 0.2968              | 0.2630              | 6.34%             |
+| Fold 2        | 0.5076              | 0.4800              | 0.2896              | 0.2644              | 5.44%             |
+| Fold 3        | 0.5153              | 0.4948              | 0.2927              | 0.2738              | 3.98%             |
+| Fold 4        | 0.5073              | 0.4958              | 0.2903              | 0.2648              | 2.27%             |
 | **Mean ± SD** | **0.5145 ± 0.0074** | **0.4887 ± 0.0075** | **0.2932 ± 0.0034** | **0.2654 ± 0.0049** | **5.00% ± 1.89%** |
 
 The five-fold cross-validation demonstrates high consistency:
@@ -291,17 +289,17 @@ To assess the practical safety impact of knowledge distillation in nighttime dri
 
 **TABLE VII. Nighttime AP50 Gain per Class (Student KD vs. Baseline)**
 
-| Category | Object Class | Baseline | Student KD | Gain (Δ) | Safety Target |
-|---|---|---|---|---|---|
-| VRU | Bicycle (Bike) | 0.2479 | 0.3561 | +0.1082 | Vulnerable Road User |
-| VRU | Rider | 0.3143 | 0.4198 | +0.1055 | Vulnerable Road User |
-| VRU | Motorcycle (Motor) | 0.2629 | 0.2798 | +0.0169 | Vulnerable Road User |
-| General | Bus | 0.3984 | 0.4137 | +0.0153 | Large Vehicle |
-| Traffic | Traffic Light | 0.5164 | 0.5285 | +0.0121 | Infrastructure |
-| VRU | Person (Pedestrian) | 0.4885 | 0.4978 | +0.0093 | Vulnerable Road User |
-| Traffic | Traffic Sign | 0.6053 | 0.6122 | +0.0069 | Infrastructure |
-| General | Truck | 0.4692 | 0.4721 | +0.0029 | Large Vehicle |
-| General | Car | 0.7198 | 0.7216 | +0.0018 | Dominant Vehicle |
+| Category | Object Class        | Baseline | Student KD | Gain (Δ) | Safety Target        |
+| -------- | ------------------- | -------- | ---------- | -------- | -------------------- |
+| VRU      | Bicycle (Bike)      | 0.2479   | 0.3561     | +0.1082  | Vulnerable Road User |
+| VRU      | Rider               | 0.3143   | 0.4198     | +0.1055  | Vulnerable Road User |
+| VRU      | Motorcycle (Motor)  | 0.2629   | 0.2798     | +0.0169  | Vulnerable Road User |
+| General  | Bus                 | 0.3984   | 0.4137     | +0.0153  | Large Vehicle        |
+| Traffic  | Traffic Light       | 0.5164   | 0.5285     | +0.0121  | Infrastructure       |
+| VRU      | Person (Pedestrian) | 0.4885   | 0.4978     | +0.0093  | Vulnerable Road User |
+| Traffic  | Traffic Sign        | 0.6053   | 0.6122     | +0.0069  | Infrastructure       |
+| General  | Truck               | 0.4692   | 0.4721     | +0.0029  | Large Vehicle        |
+| General  | Car                 | 0.7198   | 0.7216     | +0.0018  | Dominant Vehicle     |
 
 Student KD outperforms the baseline across all 9 categories under nighttime conditions, and likewise across all 9 categories under daytime conditions, so that no class regresses in either domain. Crucially, the most substantial performance jumps occur in Vulnerable Road User (VRU) classes: Bicycle (+0.1082 AP50) and Rider (+0.1055 AP50). In dark driving environments, small and non-rigid VRUs suffer heavily from low contrast and motion blur. Distillation from the high-capacity teacher transfers essential structural priors and confidence calibration that prevent compact student models from missing underrepresented road users at night.
 
@@ -345,34 +343,34 @@ Building upon these findings, future research directions include:
 
 Semua referensi [1] sampai [21] tetap dipakai. Empat entri harus diperbaiki:
 
-**[4]** A. Karjol and D. M. Hanna, "Edge AI for automotive vulnerable road user safety: Deployable detection via knowledge distillation," *arXiv preprint* arXiv:2604.26857, Apr. 2026.
-*(Bukan CVPR 2024. Cek ulang statusnya menjelang finalisasi.)*
+**[4]** A. Karjol and D. M. Hanna, "Edge AI for automotive vulnerable road user safety: Deployable detection via knowledge distillation," _arXiv preprint_ arXiv:2604.26857, Apr. 2026.
+_(Bukan CVPR 2024. Cek ulang statusnya menjelang finalisasi.)_
 
-**[16]** J. Liang et al., "Exploring inconsistent knowledge distillation for object detection with data augmentation," in *Proc. ACM Int. Conf. Multimedia*, 2023.
-*(Bukan CVPR 2024.)*
+**[16]** J. Liang et al., "Exploring inconsistent knowledge distillation for object detection with data augmentation," in _Proc. ACM Int. Conf. Multimedia_, 2023.
+_(Bukan CVPR 2024.)_
 
-**[19]** L. Yao, F. Liu, C. Zhang, Z. Ou, and T. Wu, "Domain-invariant progressive knowledge distillation for UAV-based object detection," *IEEE Geosci. Remote Sens. Lett.*, vol. 21, 2024.
-*(Bukan CVPR 2024.)*
+**[19]** L. Yao, F. Liu, C. Zhang, Z. Ou, and T. Wu, "Domain-invariant progressive knowledge distillation for UAV-based object detection," _IEEE Geosci. Remote Sens. Lett._, vol. 21, 2024.
+_(Bukan CVPR 2024.)_
 
-**[21]** X. Cao, Y. Hu, and H. Zhang, "LKD-YOLOv8: A lightweight knowledge distillation-based method for infrared object detection," *Sensors*, vol. 25, no. 13, p. 4054, 2025.
-*(Penulis pertama Xiancheng Cao.)*
+**[21]** X. Cao, Y. Hu, and H. Zhang, "LKD-YOLOv8: A lightweight knowledge distillation-based method for infrared object detection," _Sensors_, vol. 25, no. 13, p. 4054, 2025.
+_(Penulis pertama Xiancheng Cao.)_
 
 ### 8.2 Lima yang ditambahkan
 
-**[22]** C. Shu, Y. Liu, J. Gao, Z. Yan, and C. Shen, "Channel-wise knowledge distillation for dense prediction," in *Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)*, 2021, pp. 5311–5320.
-*Dipakai di: II.B, III.E, III.F. Atribusi CWD, wajib.*
+**[22]** C. Shu, Y. Liu, J. Gao, Z. Yan, and C. Shen, "Channel-wise knowledge distillation for dense prediction," in _Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)_, 2021, pp. 5311–5320.
+_Dipakai di: II.B, III.E, III.F. Atribusi CWD, wajib._
 
-**[23]** A. Jafari, M. Rezagholizadeh, P. Sharma, and A. Ghodsi, "Annealing knowledge distillation," in *Proc. Conf. European Chapter Assoc. Computational Linguistics (EACL)*, 2021, pp. 2493–2504.
-*Dipakai di: II.B, III.E. Landasan jadwal beta.*
+**[23]** A. Jafari, M. Rezagholizadeh, P. Sharma, and A. Ghodsi, "Annealing knowledge distillation," in _Proc. Conf. European Chapter Assoc. Computational Linguistics (EACL)_, 2021, pp. 2493–2504.
+_Dipakai di: II.B, III.E. Landasan jadwal beta._
 
-**[24]** Y. Cui, L. Li, H. Yin, Y. Gao, Y. Sun, and C. Yan, "Debiased teacher for day-to-night domain adaptive object detection," in *Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)*, 2025.
-*Dipakai di: I, II.A, II.D, III.G. Pernyataan masalah day-to-night dan protokol pemisahan BDD100K. Cek tahun di halaman CVF.*
+**[24]** Y. Cui, L. Li, H. Yin, Y. Gao, Y. Sun, and C. Yan, "Debiased teacher for day-to-night domain adaptive object detection," in _Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)_, 2025.
+_Dipakai di: I, II.A, II.D, III.G. Pernyataan masalah day-to-night dan protokol pemisahan BDD100K. Cek tahun di halaman CVF._
 
-**[25]** E. Jones et al., "A study on data selection for object detection in various lighting conditions for autonomous vehicles," *J. Imaging*, vol. 10, no. 7, p. 153, 2024.
-*Dipakai di: I. Bukti bahwa melatih satu kondisi saja mengorbankan kondisi lain.*
+**[25]** E. Jones et al., "A study on data selection for object detection in various lighting conditions for autonomous vehicles," _J. Imaging_, vol. 10, no. 7, p. 153, 2024.
+_Dipakai di: I. Bukti bahwa melatih satu kondisi saja mengorbankan kondisi lain._
 
-**[26]** J. Liu, Z. Wang, L. Ma, et al., "Benchmarking object detection robustness against real-world corruptions," *Int. J. Comput. Vis.*, 2024.
-*Dipakai di: I. Bukti bahwa mAP tinggi tidak menjamin ketahanan.*
+**[26]** J. Liu, Z. Wang, L. Ma, et al., "Benchmarking object detection robustness against real-world corruptions," _Int. J. Comput. Vis._, 2024.
+_Dipakai di: I. Bukti bahwa mAP tinggi tidak menjamin ketahanan._
 
 ### 8.3 Yang sengaja tidak ditambahkan
 

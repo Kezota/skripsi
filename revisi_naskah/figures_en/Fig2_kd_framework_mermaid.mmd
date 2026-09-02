@@ -1,0 +1,54 @@
+flowchart LR
+    IN["Input<br/>640×640"]
+
+    subgraph T["Teacher YOLOv8-L (frozen, no gradient)"]
+        direction LR
+        TB["Backbone"] --> TN["Neck<br/>P3, P4, P5"] --> TH["Head<br/>class logits, DFL"]
+    end
+
+    subgraph S["Student YOLOv8-S (trainable)"]
+        direction LR
+        SB["Backbone"] --> SN["Neck<br/>P3, P4, P5"] --> SH["Head<br/>class logits, DFL"]
+    end
+
+    AD["1×1 adapter"]
+    GT["Ground truth"]
+
+    LC["L_CWD<br/>channel-wise KL, τ = 4"]
+    LR["L_cls + L_dfl<br/>KL on logits, T = 4 and 2<br/>× w per anchor, w = √(teacher conf)"]
+    LT["L_task<br/>YOLOv8 detection loss"]
+    TOT["L_total =<br/>α L_task<br/>+ β(t)(L_cls + L_dfl)<br/>+ γ L_CWD<br/><br/>β(t): cosine decay 0.35 → 0.10"]
+
+    IN --> TB
+    IN --> SB
+
+    TN --> LC
+    SN --> AD --> LC
+
+    TH --> LR
+    SH --> LR
+
+    SH --> LT
+    GT --> LT
+
+    LC --> TOT
+    LR --> TOT
+    LT --> TOT
+
+    BP(["backpropagation to student and adapter only"])
+    TOT -.-> BP
+
+    classDef teacher fill:#5A5F73,stroke:#5A5F73,color:#fff
+    classDef student fill:#0E1E3C,stroke:#0E1E3C,color:#fff
+    classDef ours fill:#EDEBFA,stroke:#4A3DA6,color:#000
+    classDef loss fill:#FBF1E3,stroke:#B26A12,color:#000
+    classDef io fill:#F2F2F2,stroke:#9A9A9A,color:#000
+    class TB,TN,TH teacher
+    class SB,SN,SH student
+    class AD,LC ours
+    class LR,LT,TOT loss
+    class IN,GT io
+    style BP fill:none,stroke:none,color:#0E1E3C
+    style T fill:none,stroke:#5A5F73,stroke-dasharray:4 3
+    style S fill:none,stroke:#0E1E3C,stroke-dasharray:4 3
+    linkStyle 6,7,8 stroke:#4A3DA6,stroke-width:1.5px

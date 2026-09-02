@@ -1,7 +1,7 @@
 flowchart TD
     A["BDD100K raw<br/>100,000 keyframes"] --> B["Filter by <i>timeofday</i><br/>daytime and night only"]
     B --> C["Drop class <i>train</i><br/>25 train images, 3 test instances<br/>9 classes retained"]
-    C --> D["Balanced split<br/>Train 8,000 day + 8,000 night<br/>Val 2,000 + 2,000 &nbsp;|&nbsp; Test 2,000 + 2,000"]
+    C --> D["Balanced split<br/>Train 10,000 day + 10,000 night<br/>Val 2,000 + 2,000 &nbsp;|&nbsp; Test 2,000 + 2,000"]
     D --> E["Augmentation<br/>letterbox 640, horizontal flip, affine<br/>color jitter, blur"]
     E --> T["Teacher YOLOv8-L<br/>COCO pretrained, 43.7M"]
     E --> S["Student YOLOv8-S<br/>COCO pretrained, 11.2M"]
