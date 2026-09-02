@@ -1,0 +1,21 @@
+flowchart TD
+    A["BDD100K raw<br/>100,000 keyframes"] --> B["Filter by <i>timeofday</i><br/>daytime and night only"]
+    B --> C["Drop class <i>train</i><br/>25 train images, 3 test instances<br/>9 classes retained"]
+    C --> D["Balanced split<br/>Train 8,000 day + 8,000 night<br/>Val 2,000 + 2,000 &nbsp;|&nbsp; Test 2,000 + 2,000"]
+    D --> E["Augmentation<br/>letterbox 640, horizontal flip, affine<br/>color jitter, blur"]
+    E --> T["Teacher YOLOv8-L<br/>COCO pretrained, 43.7M"]
+    E --> S["Student YOLOv8-S<br/>COCO pretrained, 11.2M"]
+    T --> T1["Replace head 80 to 9 classes<br/>focal-prior bias init"]
+    S --> S1["Replace head 80 to 9 classes<br/>focal-prior bias init"]
+    T1 --> T2["Full fine-tune<br/>all layers unfrozen"]
+    S1 --> S2["Full fine-tune<br/>all layers unfrozen"]
+    T2 --> T3[("Best teacher<br/>frozen for distillation")]
+    S2 --> S3[("Student baseline<br/>no teacher guidance")]
+    T3 --> EV["Evaluate separately<br/>daytime test and night test"]
+    S3 --> EV
+    classDef data fill:#EEF1F7,stroke:#8A94A8,color:#15151E
+    classDef model fill:#0E1E3C,stroke:#0E1E3C,color:#FFFFFF
+    classDef out fill:#FBF1E3,stroke:#B26A12,color:#15151E
+    class A,B,C,D,E data
+    class T,S,T1,S1,T2,S2 model
+    class T3,S3,EV out

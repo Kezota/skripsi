@@ -1,0 +1,49 @@
+flowchart TB
+    IMG["Input image 640 x 640"] --> T["Teacher YOLOv8-L<br/>frozen, no gradient"]
+    IMG --> S["Student YOLOv8-S<br/>trainable"]
+    GT["Ground truth"] --> LT["L<sub>task</sub><br/>v8DetectionLoss"]
+    S --> LT
+
+    subgraph FEAT["Feature distillation on neck P3, P4, P5"]
+        direction LR
+        TF["Teacher features<br/>layers 15, 18, 21"]
+        SF["Student features<br/>layers 15, 18, 21"]
+        SF --> AD["1x1 conv adapter<br/>no BN, no ReLU"]
+        AD --> CWD["Channel-wise Distillation<br/>spatial softmax, tau = 4, KL"]
+        TF --> CWD
+    end
+    T --> TF
+    S --> SF
+
+    subgraph RESP["Response distillation on detection head"]
+        direction LR
+        TL["Teacher logits<br/>class and DFL"]
+        SL["Student logits<br/>class and DFL"]
+        TL --> W["Soft confidence weight<br/>w = sqrt of teacher conf"]
+        TL --> KL1["KL on class logits<br/>T = 4"]
+        SL --> KL1
+        TL --> KL2["KL on DFL bins<br/>T = 2"]
+        SL --> KL2
+        W -. weights .-> KL1
+        W -. weights .-> KL2
+    end
+    T --> TL
+    S --> SL
+
+    CWD --> LF["gamma L<sub>CWD</sub><br/>gamma = 0.03"]
+    KL1 --> LR["beta(t) L<sub>resp</sub><br/>cosine 0.35 to 0.10"]
+    KL2 --> LR
+    LT --> TOT["L<sub>total</sub> = alpha L<sub>task</sub> + beta(t) L<sub>resp</sub> + gamma L<sub>CWD</sub><br/>alpha = 0.7"]
+    LR --> TOT
+    LF --> TOT
+    TOT --> BP["Backpropagate to student only"]
+    classDef io fill:#EEF1F7,stroke:#8A94A8,color:#15151E
+    classDef teach fill:#5A5F73,stroke:#5A5F73,color:#FFFFFF
+    classDef stud fill:#0E1E3C,stroke:#0E1E3C,color:#FFFFFF
+    classDef loss fill:#FBF1E3,stroke:#B26A12,color:#15151E
+    classDef ours fill:#EDEBFA,stroke:#4A3DA6,color:#15151E
+    class IMG,GT io
+    class T,TF,TL teach
+    class S,SF,SL,BP stud
+    class LT,LF,LR,TOT loss
+    class AD,CWD,W,KL1,KL2 ours

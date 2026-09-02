@@ -1,0 +1,16 @@
+flowchart LR
+    M["Trained model<br/>same weights"] --> D["Daytime test<br/>2,000 images"]
+    M --> N["Night test<br/>2,000 images"]
+    D --> MD["mAP<sub>day</sub>"]
+    N --> MN["mAP<sub>night</sub>"]
+    MD --> R["Relative drop<br/>(mAP<sub>day</sub> - mAP<sub>night</sub>) / mAP<sub>day</sub>"]
+    MN --> R
+    R --> P["Repeated over<br/>3 seeds &nbsp;|&nbsp; 5 folds &nbsp;|&nbsp; 3 ablations"]
+    classDef m fill:#0E1E3C,stroke:#0E1E3C,color:#FFFFFF
+    classDef day fill:#FBF1E3,stroke:#B26A12,color:#15151E
+    classDef night fill:#EDEBFA,stroke:#4A3DA6,color:#15151E
+    classDef out fill:#EEF1F7,stroke:#8A94A8,color:#15151E
+    class M m
+    class D,MD day
+    class N,MN night
+    class R,P out
